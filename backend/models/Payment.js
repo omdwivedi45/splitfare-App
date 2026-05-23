@@ -7,13 +7,13 @@ const paymentSchema = new mongoose.Schema({
   amount: { type: Number, required: true },
   currency: { type: String, default: 'INR' },
 
-  // Razorpay
-  razorpayOrderId: { type: String, default: '' },
-  razorpayPaymentId: { type: String, default: '' },
-  razorpaySignature: { type: String, default: '' },
+  // UPI Transaction
+  upiTxnId: { type: String, default: '' },
+  riderSubmittedAt: { type: Date },
+  driverConfirmedAt: { type: Date },
 
   method: { type: String, enum: ['upi', 'card', 'wallet', 'netbanking', 'cash'], default: 'upi' },
-  status: { type: String, enum: ['created', 'paid', 'failed', 'refunded'], default: 'created' },
+  status: { type: String, enum: ['created', 'pending_confirmation', 'paid', 'failed', 'refunded'], default: 'created' },
   refundId: { type: String, default: '' },
   notes: { type: String, default: '' },
 }, { timestamps: true });

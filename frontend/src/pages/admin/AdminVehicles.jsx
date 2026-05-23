@@ -187,7 +187,7 @@ export function AdminPayments() {
         {loading ? <div className="flex-center" style={{ height: 200 }}><div className="spinner spinner-lg" /></div>
         : <div className="table-wrap">
             <table>
-              <thead><tr><th>Date</th><th>Payer</th><th>Receiver</th><th>Route</th><th>Amount</th><th>Method</th><th>Status</th><th>Razorpay ID</th></tr></thead>
+              <thead><tr><th>Date</th><th>Payer</th><th>Receiver</th><th>Route</th><th>Amount</th><th>Method</th><th>Status</th><th>UPI Ref / UTR</th></tr></thead>
               <tbody>
                 {payments.map(p => (
                   <tr key={p._id}>
@@ -204,7 +204,7 @@ export function AdminPayments() {
                     <td style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, color: 'var(--cyan)', fontSize: '1rem' }}>₹{p.amount}</td>
                     <td><span className="pill pill-purple" style={{ fontSize: '0.7rem', textTransform: 'capitalize' }}>{p.method}</span></td>
                     <td><span className={`pill pill-${p.status==='paid'?'green':p.status==='failed'?'red':'amber'}`} style={{ fontSize: '0.7rem', textTransform: 'capitalize' }}>{p.status}</span></td>
-                    <td style={{ fontFamily: 'monospace', fontSize: '0.72rem', color: 'var(--text2)' }}>{p.razorpayPaymentId || '—'}</td>
+                    <td style={{ fontFamily: 'monospace', fontSize: '0.72rem', color: 'var(--text2)' }}>{p.upiTxnId || '—'}</td>
                   </tr>
                 ))}
               </tbody>

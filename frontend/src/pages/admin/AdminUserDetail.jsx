@@ -178,7 +178,7 @@ export default function AdminUserDetail() {
               <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, marginBottom: 16 }}>Payments ({payments.length})</div>
               <div className="table-wrap" style={{ border: 'none', borderRadius: 0 }}>
                 <table>
-                  <thead><tr><th>Date</th><th>Amount</th><th>Method</th><th>Status</th><th>Razorpay ID</th></tr></thead>
+                  <thead><tr><th>Date</th><th>Amount</th><th>Method</th><th>Status</th><th>UPI Ref / UTR</th></tr></thead>
                   <tbody>
                     {payments.map(p => (
                       <tr key={p._id}>
@@ -186,7 +186,7 @@ export default function AdminUserDetail() {
                         <td style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, color: 'var(--cyan)' }}>₹{p.amount}</td>
                         <td style={{ fontSize: '0.78rem' }}>{p.method}</td>
                         <td><span className={`pill pill-${p.status === 'paid' ? 'green' : p.status === 'failed' ? 'red' : 'amber'}`} style={{ fontSize: '0.68rem', textTransform: 'capitalize' }}>{p.status}</span></td>
-                        <td style={{ fontFamily: 'monospace', fontSize: '0.72rem', color: 'var(--text2)' }}>{p.razorpayPaymentId || '—'}</td>
+                        <td style={{ fontFamily: 'monospace', fontSize: '0.72rem', color: 'var(--text2)' }}>{p.upiTxnId || '—'}</td>
                       </tr>
                     ))}
                   </tbody>

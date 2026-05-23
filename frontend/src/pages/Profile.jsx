@@ -10,7 +10,7 @@ export default function Profile() {
   const [saving, setSaving] = useState(false)
   const [form, setForm] = useState({
     name: user?.name || '', phone: user?.phone || '', city: user?.city || '',
-    address: user?.address || '', state: user?.state || '',
+    address: user?.address || '', state: user?.state || '', upiId: user?.upiId || '',
     emergencyContact: user?.emergencyContact || { name: '', phone: '', relation: '' }
   })
   const [verForm, setVerForm] = useState({ govIdType: 'aadhar', govIdNumber: '', govIdImage: '', selfieImage: '' })
@@ -101,6 +101,7 @@ export default function Profile() {
                 <div className="form-group"><label className="form-label">State</label><input className="form-input" placeholder="Madhya Pradesh" value={form.state} onChange={set('state')} /></div>
               </div>
               <div className="form-group"><label className="form-label">Address</label><input className="form-input" placeholder="Street, Area" value={form.address} onChange={set('address')} /></div>
+              <div className="form-group"><label className="form-label">UPI ID (VPA) for Direct Payments</label><input className="form-input" placeholder="e.g. 9000000000@upi or drivername@okaxis" value={form.upiId} onChange={set('upiId')} /></div>
 
               <div style={{ marginTop: 8, marginBottom: 20, fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '0.95rem' }}>Emergency Contact</div>
               <div className="grid-3">

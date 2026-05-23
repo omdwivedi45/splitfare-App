@@ -8,8 +8,24 @@ const Vehicle = require('./models/Vehicle');
 
 async function seed() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log('✅ Connected to MongoDB');
+    const primaryUri = process.env.MONGODB_URI;
+    const fallbackUri = process.env.MONGODB_FALLBACK_URI || 'mongodb://127.0.0.1:27017/splitfare';
+    
+    let connected = false;
+    if (primaryUri) {
+      try {
+        await mongoose.connect(primaryUri);
+        console.log('✅ Connected to MongoDB (Primary)');
+        connected = true;
+      } catch (err) {
+        console.warn('⚠️ Primary MongoDB connection failed, trying fallback...');
+      }
+    }
+    
+    if (!connected) {
+      await mongoose.connect(fallbackUri);
+      console.log('✅ Connected to MongoDB (Fallback/Local)');
+    }
 
     // Clear existing demo users
     await User.deleteMany({ email: { $in: ['admin@splitfare.in', 'driver@splitfare.in', 'rider@splitfare.in', 'rider2@splitfare.in'] } });

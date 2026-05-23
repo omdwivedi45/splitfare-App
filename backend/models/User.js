@@ -33,6 +33,7 @@ const userSchema = new mongoose.Schema({
 
   // Wallet
   walletBalance: { type: Number, default: 0 },
+  upiId: { type: String, default: '' },
 
   // Emergency contact
   emergencyContact: {

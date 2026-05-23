@@ -65,7 +65,7 @@ router.get('/me', auth, async (req, res) => {
 // PUT /api/auth/update-profile
 router.put('/update-profile', auth, async (req, res) => {
   try {
-    const allowed = ['name', 'phone', 'address', 'city', 'state', 'emergencyContact', 'avatar', 'fcmToken'];
+    const allowed = ['name', 'phone', 'address', 'city', 'state', 'emergencyContact', 'avatar', 'fcmToken', 'upiId'];
     const updates = {};
     allowed.forEach(key => { if (req.body[key] !== undefined) updates[key] = req.body[key]; });
     const user = await User.findByIdAndUpdate(req.user._id, updates, { new: true }).select('-password');
