@@ -1,0 +1,18 @@
+.searchCard { padding: 28px; margin-top: 32px; }
+.searchForm { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+.searchForm .form-group { flex: 1; min-width: 180px; margin-bottom: 0; }
+
+.matchesGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+
+.matchCard { padding: 24px; animation: fadeIn 0.35s ease both; background: var(--bg2) !important; }
+.matchHeader { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+
+.routeInfo { background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); padding: 14px; margin-bottom: 16px; }
+.routePoint { display: flex; align-items: flex-start; gap: 10px; }
+.routeDot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.routeLine { width: 2px; height: 16px; background: var(--card-border); margin: 4px 0 4px 4px; }
+
+.matchMeta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.metaItem { display: flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.03); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; color: var(--text2); }
+
+.matchFooter { display: flex; align-items: flex-end; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--card-border); }

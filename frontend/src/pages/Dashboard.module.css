@@ -1,0 +1,52 @@
+.greeting {
+  display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap;
+  gap: 24px; padding: 40px; background: var(--bg2); border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg); position: relative; overflow: hidden;
+}
+.greetOrb {
+  position: absolute; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,229,255,0.06), transparent 70%);
+  top: -150px; right: -100px; pointer-events: none;
+}
+.greetActions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+.statsGrid { margin-top: 24px; }
+.statCard {
+  padding: 24px; text-align: center; animation: fadeIn 0.4s ease both;
+  background: var(--bg2) !important;
+}
+.statIcon { font-size: 1.8rem; margin-bottom: 12px; }
+.statVal { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; }
+.statLabel { font-size: 0.78rem; color: var(--text2); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.verifyBanner {
+  background: rgba(255,179,0,0.08); border: 1px solid rgba(255,179,0,0.2);
+  border-radius: var(--radius-sm); padding: 14px 20px; margin-top: 20px;
+  font-size: 0.88rem; color: var(--amber); display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+}
+.verifyBanner a { color: var(--cyan); font-weight: 500; }
+
+.actionCard {
+  padding: 28px; display: flex; flex-direction: column;
+  text-decoration: none; animation: fadeIn 0.4s ease both;
+  background: var(--bg2) !important; position: relative;
+}
+.actionCard:hover .actionArrow { transform: translateX(4px); color: var(--cyan); }
+.actionIcon { font-size: 2rem; margin-bottom: 14px; }
+.actionTitle { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.actionDesc { color: var(--text2); font-size: 0.83rem; line-height: 1.5; flex: 1; }
+.actionArrow { color: var(--text3); font-size: 1.2rem; margin-top: 16px; transition: var(--transition); }
+
+.rideItem {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; margin-bottom: 10px; text-decoration: none;
+  background: var(--bg2) !important;
+}
+.rideItem:last-child { margin-bottom: 0; }
+.rideIcon {
+  width: 44px; height: 44px; border-radius: 12px; display: flex;
+  align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+}
+.rideInfo { flex: 1; }
+.rideRoute { font-weight: 500; font-size: 0.92rem; margin-bottom: 3px; }
+.rideMeta { color: var(--text2); font-size: 0.78rem; text-transform: capitalize; }

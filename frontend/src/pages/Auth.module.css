@@ -1,0 +1,72 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.orb1 {
+  position: fixed; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0,229,255,0.1), transparent 70%);
+  top: -200px; left: -100px; pointer-events: none;
+}
+.orb2 {
+  position: fixed; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(124,77,255,0.08), transparent 70%);
+  bottom: -100px; right: -100px; pointer-events: none;
+}
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  width: 100%;
+  max-width: 460px;
+  animation: slideUp 0.4s ease;
+  position: relative; z-index: 1;
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 32px;
+}
+.logoIcon {
+  width: 30px; height: 30px;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px;
+}
+.title { font-size: 1.8rem; margin-bottom: 6px; }
+.sub { color: var(--text2); font-size: 0.9rem; margin-bottom: 32px; font-weight: 300; }
+.submitBtn { width: 100%; padding: 14px; border-radius: var(--radius-sm) !important; font-size: 1rem !important; }
+.switchLink { text-align: center; color: var(--text2); font-size: 0.88rem; margin-top: 24px; }
+.switchLink a { color: var(--cyan); font-weight: 500; }
+
+.demo { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--card-border); }
+.demoTitle { font-size: 0.72rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.demoItem {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 0.8rem;
+  color: var(--text2);
+  cursor: pointer;
+  margin-bottom: 6px;
+  transition: var(--transition);
+}
+.demoItem:hover { background: rgba(0,229,255,0.06); color: var(--cyan); border-color: rgba(0,229,255,0.2); }
+
+.twoCol { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.roleRow { display: flex; gap: 12px; margin-bottom: 20px; }
+.roleBtn {
+  flex: 1; padding: 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--card-border); background: transparent;
+  color: var(--text2); font-size: 0.88rem; font-weight: 500;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: var(--transition);
+}
+.roleBtn.active { background: rgba(0,229,255,0.1); border-color: var(--cyan); color: var(--cyan); }
