@@ -32,6 +32,11 @@ export default function Payments() {
     refunded: 'purple' 
   }
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text)
+    toast.success('UPI ID copied to clipboard! 📋')
+  }
+
   const initiatePayment = async (rideId) => {
     try {
       const res = await api.post('/payments/initiate', { rideId })
@@ -236,6 +241,12 @@ export default function Payments() {
                 >
                   ⚡ Open UPI App to Pay
                 </a>
+
+                {/* Plain-text Copyable UPI ID (Fail-proof fallback) */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'rgba(255,255,255,0.04)', padding: '10px 14px', borderRadius: 8, border: '1px solid var(--card-border)', marginTop: 4 }}>
+                  <span style={{ fontFamily: 'monospace', fontSize: '0.88rem', color: 'var(--cyan)', fontWeight: 600 }}>{activePayment.receiverUpiId}</span>
+                  <button type="button" className="btn btn-secondary btn-sm" onClick={() => copyToClipboard(activePayment.receiverUpiId)} style={{ padding: '6px 12px', fontSize: '0.75rem', borderRadius: 6 }}>📋 Copy ID</button>
+                </div>
                 
                 <div className="divider" style={{ width: '100%', margin: '10px 0' }} />
 
