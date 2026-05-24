@@ -102,6 +102,8 @@ router.post('/change-password', auth, async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+});
+
 const Vehicle = require('../models/Vehicle');
 
 // GET /api/auth/seed-live (Temporary secure seed endpoint)
