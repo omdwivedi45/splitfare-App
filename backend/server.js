@@ -35,8 +35,11 @@ const mongoOptions = {
 };
 
 const connectMongo = async () => {
-  const primaryUri = process.env.MONGODB_URI;
-  const fallbackUri = process.env.MONGODB_FALLBACK_URI || 'mongodb://127.0.0.1:27017/splitfare';
+  let primaryUri = process.env.MONGODB_URI;
+  if (primaryUri) {
+    primaryUri = primaryUri.replace(/\/splitfare/i, '/Splitfare');
+  }
+  const fallbackUri = process.env.MONGODB_FALLBACK_URI || 'mongodb://127.0.0.1:27017/Splitfare';
   const tryConnect = async (uri, label) => {
     try {
       await mongoose.connect(uri, mongoOptions);

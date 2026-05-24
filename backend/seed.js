@@ -8,8 +8,11 @@ const Vehicle = require('./models/Vehicle');
 
 async function seed() {
   try {
-    const primaryUri = process.env.MONGODB_URI;
-    const fallbackUri = process.env.MONGODB_FALLBACK_URI || 'mongodb://127.0.0.1:27017/splitfare';
+    let primaryUri = process.env.MONGODB_URI;
+    if (primaryUri) {
+      primaryUri = primaryUri.replace(/\/splitfare/i, '/Splitfare');
+    }
+    const fallbackUri = process.env.MONGODB_FALLBACK_URI || 'mongodb://127.0.0.1:27017/Splitfare';
     
     let connected = false;
     if (primaryUri) {
