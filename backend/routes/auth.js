@@ -102,6 +102,89 @@ router.post('/change-password', auth, async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+const Vehicle = require('../models/Vehicle');
+
+// GET /api/auth/seed-live (Temporary secure seed endpoint)
+router.get('/seed-live', async (req, res) => {
+  try {
+    // Delete any existing demo accounts
+    await User.deleteMany({ email: { $in: ['admin@splitfare.in', 'driver@splitfare.in', 'rider@splitfare.in', 'rider2@splitfare.in', 'arjun45@gmail.com'] } });
+    await Vehicle.deleteMany({}); // clear vehicles
+
+    // Create Admin
+    const admin = await User.create({
+      name: 'SplitFare Admin',
+      email: 'admin@splitfare.in',
+      phone: '9000000001',
+      password: 'admin123',
+      gender: 'male',
+      role: 'admin',
+      city: 'Bhopal',
+      state: 'Madhya Pradesh',
+      isVerified: true,
+      verificationStatus: 'approved',
+    });
+
+    // Create Driver
+    const driver = await User.create({
+      name: 'Rahul Verma',
+      email: 'driver@splitfare.in',
+      phone: '9000000002',
+      password: 'test123',
+      gender: 'male',
+      role: 'driver',
+      city: 'Bhopal',
+      state: 'Madhya Pradesh',
+      isVerified: true,
+      verificationStatus: 'approved',
+      totalRides: 91,
+      rating: 4.9,
+      ratingCount: 87,
+      totalSavings: 8400,
+      co2Saved: 48.2,
+    });
+
+    // Create Vehicle
+    await Vehicle.create({
+      owner: driver._id,
+      type: 'car',
+      brand: 'Honda',
+      model: 'City',
+      year: 2022,
+      color: 'White',
+      plateNumber: 'MP04AB1234',
+      capacity: 5,
+      availableSeats: 4,
+      fuelType: 'petrol',
+      acAvailable: true,
+      isVerified: true,
+      verificationStatus: 'approved',
+      totalRides: 91,
+    });
+
+    // Create Rider 1
+    await User.create({
+      name: 'Priya Singh',
+      email: 'rider@splitfare.in',
+      phone: '9000000003',
+      password: 'test123',
+      gender: 'female',
+      role: 'rider',
+      city: 'Bhopal',
+      state: 'Madhya Pradesh',
+      isVerified: true,
+      verificationStatus: 'approved',
+      totalRides: 38,
+      rating: 4.8,
+      ratingCount: 34,
+      totalSavings: 4200,
+      co2Saved: 22.1,
+    });
+
+    res.json({ message: 'Live MongoDB Atlas Database Seeded successfully! Demo accounts are active.' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 module.exports = router;
